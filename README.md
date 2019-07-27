@@ -3,6 +3,7 @@
 - add => ```nest g cl <name>/<name>.entity```
 - inherit from ```BaseEntity from 'typeorm'```
 feature.entity.ts
+- don't forget to add the line **@Entity()**
 ```js
 import { Base } from './../base.entity';
 
