@@ -1,0 +1,19 @@
+{
+  "name": "sd-nest-base",
+  "version": "0.0.3",
+  "description": "A basic package for nestjs to create easily an api server",
+  "author": "deolmer",
+  "license": "MIT",
+  "peerDependencies": {
+    "@nestjs/common": "^6.0.0",
+    "@nestjs/core": "^6.0.0",
+    "@nestjs/typeorm": "^6.1.2",
+    "mongodb": "^3.2.7",
+    "typeorm": "^0.2.18"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json"
+  }
+}
