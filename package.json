@@ -4,7 +4,16 @@
   "description": "A basic package for nestjs to create easily an api server",
   "author": "deolmer",
   "license": "MIT",
-  "keywords": ["nestjs", "mongodb", "api", "api-server"],
+  "keywords": [
+    "nestjs",
+    "mongodb",
+    "api",
+    "api-server"
+  ],
+  "homepage": "https://github.com/sd-softdev/sd-nest-base#readme",
+  "bugs": {
+    "url": "https://github.com/sd-softdev/sd-nest-base/issues"
+  },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
@@ -19,5 +28,7 @@
     "build:pack": "tsc -p tsconfig.lib.json&&npm pack",
     "build:publish": "tsc -p tsconfig.lib.json&&npm publish"
   },
-  "files": ["dist/**/*"]
+  "files": [
+    "dist/**/*"
+  ]
 }
