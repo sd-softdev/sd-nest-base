@@ -28,8 +28,10 @@ export class BaseService<T> {
     async findOneById(id: string | ObjectID): Promise<T> {
         const obj = await this.repo.findByIds([new ObjectID(id)]);
 
-        if (obj.length !== 1) {
-            throw new Error('internal error in function "AsService.findOneById" - Not implement yet!');
+        if (obj.length === 0) {
+            throw new Error('No object with id: ' + id + ' was found!');
+        } else if (obj.length >= 1) {
+            throw new Error('More than one objects with id: ' + id + ' was found!');
         }
 
         return obj[0];
