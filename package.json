@@ -1,6 +1,6 @@
 {
   "name": "sd-nest-base",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A basic package for nestjs to create easily an api server",
   "author": "deolmer",
   "license": "MIT",

@@ -30,7 +30,7 @@ export class BaseService<T> {
 
         if (obj.length === 0) {
             throw new Error('No object with id: ' + id + ' was found!');
-        } else if (obj.length >= 1) {
+        } else if (obj.length > 1) {
             throw new Error('More than one objects with id: ' + id + ' was found!');
         }
 
