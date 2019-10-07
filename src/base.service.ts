@@ -1,6 +1,6 @@
 import { DuplicateKeyException } from './exceptions/duplicate.exception';
 import { ObjectID } from 'mongodb';
-import { Repository } from 'typeorm';
+import { Repository, FindManyOptions } from 'typeorm';
 import { PropertyIsMissingException } from './exceptions/propIsMissing.exception';
 
 export class BaseService<T> {
@@ -23,6 +23,21 @@ export class BaseService<T> {
 
         // if is unique, save entity
         return this.repo.save(as);
+    }
+
+    async findOneByName(name: string): Promise<T> {
+        const opt: FindManyOptions = {
+            where: { name },
+        };
+        const obj = await this.repo.find(opt);
+
+        if (obj.length === 0) {
+            throw new Error('No object with name: ' + name + ' was found!');
+        } else if (obj.length > 1) {
+            throw new Error('More than one objects with name: ' + name + ' was found!');
+        }
+
+        return obj[0];
     }
 
     async findOneById(id: string | ObjectID): Promise<T> {

@@ -14,6 +14,10 @@ export class BaseController<T> {
     async findOne(@Param('id') id: string) {
         return this.service.findOneById(id);
     }
+    @Get('byName/:name')
+    async findOneByName(@Param('name') name: string) {
+        return this.service.findOneByName(name);
+    }
 
     @Post()
     createOne(@Body() obj: T) {
