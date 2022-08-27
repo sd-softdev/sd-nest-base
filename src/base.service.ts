@@ -1,12 +1,13 @@
 import { DuplicateKeyException } from './exceptions/duplicate.exception';
 import { ObjectID } from 'mongodb';
-import { Repository, FindManyOptions } from 'typeorm';
+import { Repository, FindManyOptions, DeepPartial, Entity } from 'typeorm';
 import { PropertyIsMissingException } from './exceptions/propIsMissing.exception';
+import { Base } from './base.entity';
 
 export class BaseService<T> {
     uniqueProps = new Array<string>();
     requiredProps = new Array<string>();
-    constructor(private repo: Repository<any>) { }
+    constructor(private repo: Repository<T>) { }
 
     // create new obj
     async createOne(as: T) {
@@ -22,7 +23,7 @@ export class BaseService<T> {
         }
 
         // if is unique, save entity
-        return this.repo.save(as);
+        return this.repo.save<any>(as, {});
     }
 
     async findOneByName(name: string): Promise<T> {
@@ -38,6 +39,11 @@ export class BaseService<T> {
         }
 
         return obj[0];
+    }
+
+    async delete(obj: Base) {
+        const obj2delete = await this.repo.findOne(obj.id);
+        return this.repo.delete(obj2delete);
     }
 
     async findOneById(id: string | ObjectID): Promise<T> {
@@ -61,7 +67,7 @@ export class BaseService<T> {
 
     // update object
     async updateOne(obj: T) {
-        return this.repo.save(obj);
+        return this.repo.save<any>(obj);
     }
 
     // check functions

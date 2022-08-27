@@ -8,3 +8,4 @@ export { DuplicateKeyException } from './src/exceptions/duplicate.exception';
 export { PropertyIsMissingException } from './src/exceptions/propIsMissing.exception';
 
 export { ServerHttpsStatus } from './src/httpStateCode/http.enum';
+export { Entity, BaseEntity, Repository, FindManyOptions } from 'typeorm'
