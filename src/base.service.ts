@@ -46,6 +46,11 @@ export class BaseService<T> {
         return this.repo.delete(obj2delete);
     }
 
+    async deleteById(id: string) {
+        const obj2delete = await this.repo.findOne(id);
+        return this.repo.delete(obj2delete);
+    }
+    
     async findOneById(id: string | ObjectID): Promise<T> {
         const obj = await this.repo.findByIds([new ObjectID(id)]);
 
